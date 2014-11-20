@@ -4,6 +4,7 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 (tool-bar-mode -1)
+(column-number-mode t)
 
 ;(require 'ido-mode)
 (ido-mode t)
