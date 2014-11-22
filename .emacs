@@ -15,6 +15,7 @@
 (column-number-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq inhibit-startup-message t)
+(setq-default frame-title-format "%b (%f)")
 (setq initial-frame-alist '((top . 0) (left . 0) (width . 100) (height . 54)))
 
 
@@ -64,7 +65,7 @@
 (custom-set-variables
  '(custom-safe-themes
    (quote
-    ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(custom-theme-directory "~/.emacs.d/themes/"))
 (custom-set-faces)
 
