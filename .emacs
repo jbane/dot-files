@@ -1,13 +1,20 @@
-;; This prevents errors loading themes (among other issues)
+;; Packages
+(require 'package)
+(add-to-list 'package-archives
+	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+             '("tromey" . "http://tromey.com/elpa/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 
 ;; Random cruft
-;(require 'ido-mode)
-(ido-mode t)
 (tool-bar-mode -1)
+(global-linum-mode)
 (column-number-mode t)
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq inhibit-startup-message t)
 
 
 ;; Mouse scrolling that doesn't suck so hard on a Mac trackpad
@@ -26,6 +33,15 @@
 			       (scroll-up 1)))
   (defun track-mouse (e))
   (setq mouse-sel-mode t))
+
+
+;; Clojure
+;; https://github.com/flyingmachine/emacs-for-clojure.git
+(add-to-list 'load-path "~/.emacs.d/customizations")
+(load "editing.el")
+(load "navigation.el")
+(load "elisp-editing.el")
+(load "setup-clojure.el")
 
 
 ;;; Mac OS X uses launchctl
@@ -53,3 +69,4 @@
 
 (load-theme 'solarized-light t)
 ;(load-theme 'solarized-dark t)
+
