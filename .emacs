@@ -1,13 +1,32 @@
-;;; This prevents errors loading themes (among other issues)
+;; This prevents errors loading themes (among other issues)
 (package-initialize)
-
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
+
+;; Random cruft
+;(require 'ido-mode)
+(ido-mode t)
 (tool-bar-mode -1)
 (column-number-mode t)
 
-;(require 'ido-mode)
-(ido-mode t)
+
+;; Mouse scrolling that doesn't suck so hard on a Mac trackpad
+;; (hold shift to scroll slower, control to scroll faster)
+(setq mouse-wheel-scroll-amount '(3 ((shift) . 1) ((control) . nil)))
+(setq mouse-wheel-progressive-speed nil)
+(setq ring-bell-function 'ignore)
+(unless window-system
+  (require 'mouse)
+  (xterm-mouse-mode t)
+  (global-set-key [mouse-4] '(lambda ()
+			       (interactive)
+			       (scroll-down 1)))
+  (global-set-key [mouse-5] '(lambda ()
+			       (interactive)
+			       (scroll-up 1)))
+  (defun track-mouse (e))
+  (setq mouse-sel-mode t))
+
 
 ;;; Mac OS X uses launchctl
 (defun set-exec-path()
@@ -23,6 +42,7 @@
     (setq exec-path (split-string path-from-shell path-separator))))
 (set-exec-path)
 
+
 ;;; Themes
 (custom-set-variables
  '(custom-safe-themes
@@ -31,5 +51,5 @@
  '(custom-theme-directory "~/.emacs.d/themes/"))
 (custom-set-faces)
 
-;(load-theme 'solarized-light t)
-(load-theme 'solarized-dark t)
+(load-theme 'solarized-light t)
+;(load-theme 'solarized-dark t)
