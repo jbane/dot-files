@@ -15,6 +15,7 @@
 (column-number-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq inhibit-startup-message t)
+(setq initial-frame-alist '((top . 0) (left . 0) (width . 100) (height . 54)))
 
 
 ;; Mouse scrolling that doesn't suck so hard on a Mac trackpad
